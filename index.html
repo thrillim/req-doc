@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>
+      SRS: Software Requirements Specification
+  </title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+  <style>
+    /* Customization of standard HTML styles */
+    p {
+      margin-top: 0em;
+      margin-bottom: 0.5em;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 0em;
+      margin-bottom: 0.25em;
+      unicode-bidi: plaintext;
+      text-align: start;
+    }
+    table {
+      border-spacing: 1em;
+    }
+    th {
+      text-align: center;
+    }
+    ul, ol {
+      margin-bottom: 0;
+      padding-inline-start: 20px;
+      padding-inline-end: 20px;
+    }
+    pre {
+      background-color: #efefef;
+      border: 1px solid #ccc;
+      padding: 5px;
+    }
+
+    /* Customization of ReqView styles */
+    .doc {
+      margin-bottom: 5em;
+    }
+    .heading {
+      margin: 1em;
+      margin-top: 2em;
+      margin-bottom: 2em;
+    }
+    .filter {
+      text-align: right;
+      margin: 1em;
+    }
+    .reqviewTable {
+      margin: 1em;
+    }
+    .reqviewTable h1 {
+      font-size: 1.6rem;
+    }
+    .reqviewTable h2 {
+      font-size: 1.4rem;
+    }
+    .reqviewTable h3 {
+      font-size: 1.3rem;
+    }
+    .reqviewTable h4 {
+      font-size: 1.2rem;
+    }
+    .reqviewTable h5 {
+      font-size: 1.1rem;
+    }
+    .reqviewTable h6 {
+      font-size: 1rem;
+    }
+    .reqviewTable > table > thead > tr > th {
+      text-align: left;
+    }
+    /* Customization of our styles */
+    .id-col {
+      min-width: 5em;
+      vertical-align: top;
+    }
+    .description-col {
+      min-width: 30em;
+      vertical-align: top;
+    }
+    .discussion-col {
+      min-width: 15em;
+      vertical-align: top;
+    }
+    .links-col {
+      min-width: 15em;
+      vertical-align: top;
+    }
+    .custom-col {
+      min-width: 10em;
+      vertical-align: top;
+    }
+    .comment-text {
+      padding-top: 5px;
+      padding-bottom: 10px;
+    }
+    .attachment {
+      font-style: italic;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+    }
+    .attachment img {
+      max-width: 90%;
+      height: auto;
+      display: block;
+    }
+    .links-type-name {
+      font-style: italic;
+    }
+    .link {
+      margin-left: 16px;
+    }
+    td.custom-col div.htmlContent {
+      min-width: 15em;
+    }
+    .deleted {
+      color: #666;
+    }
+    .deleted .id-col,
+    .deleted .description-col,
+    .link.deleted {
+      text-decoration: line-through;
+    }
+    .deleted a {
+      color: gray;
+    }
+    .deleted img {
+      filter: grayscale(100%);
+      -webkit-filter: grayscale(100%);
+    }
+    .htmlContent table {
+      border: 1px solid black;
+      border-collapse: collapse;
+      width: auto;
+    }
+    .htmlContent th, .htmlContent td {
+      border: 1px solid #b5bcc7;
+      vertical-align: top;
+      padding: 3px 7px 2px 7px;
+    }
+    .htmlContent th {
+      padding-top: 5px;
+      padding-bottom: 4px;
+      background: silver;
+      border-bottom: none !important;
+    }
+    /** Override Bootstrap print */
+    @media print {
+      @page {
+        size: initial;
+      }
+      body {
+        min-width: unset !important;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="doc">
+  <div class="heading">
+    <h1 class="display-4">SRS: Software Requirements Specification</h1>
+  </div>
+  <div class="reqviewTable table-responsive-md">
+    <table class="table table-sm">
+      <!-- Heading of the requirements table -->
+      <thead>
+        <tr>
+          <th class="id-col"><i class="fas fa-asterisk"></i> ID</th>
+          <th class="custom-col"><i class="fas fa-cog"></i> Type</th>
+          <th class="description-col"><i class="fas fa-align-left"></i> Description</th>
+          <th class="custom-col"><i class="fas fa-cog"></i> Source</th>
+          <th class="custom-col"><i class="fas fa-cog"></i> Rationale</th>
+          <th class="custom-col"><i class="fas fa-cog"></i> Priority</th>
+          <th class="custom-col"><i class="fas fa-cog"></i> Status</th>
+          <th class="custom-col"><i class="fas fa-cog"></i> Ver. Method</th>
+        </tr>
+      </thead>
+
+      <!-- Requirements table with list of requirements -->
+      <tbody>
+        <tr>
+          <td class="id-col"><a id="SRS-1"></a>SRS-1</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h1>1&nbsp;Giới thiệu</h1>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-2"></a>SRS-2</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h2>1.1&nbsp;Mục đích</h2>
+            <div class="htmlContent"><p dir="ltr" style="text-align: justify;"><span style="text-decoration:none;vertical-align:baseline;">Mục đích của tài liệu đặc tả yêu cầu phần mềm này là cung cấp một mô tả đầy đủ các yêu cầu để thiết kế Hệ thống quản lý Cơ sở vật chất Trường Đại học Công nghệ - Đại học Quốc gia Hà Nội. Các đối tượng dự định của tài liệu này là tất cả các bên liên quan cho dự án liên quan đến sự phát triển của hệ thống quản lý nêu trên, bao gồm: Chuyên viên Phòng Hành chính quản trị, Lãnh đạo Phòng chức năng/Khoa/Viện, Lãnh đạo bộ môn/phòng thí nghiệm, Giảng viên/nhân viên, Sinh viên, Lãnh đạo nhà trường.</span></p></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-3"></a>SRS-3</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h2>1.2&nbsp;Phạm vi</h2>
+            <div class="htmlContent"><p dir="ltr" style="text-align: justify;"><span style="text-decoration:none;vertical-align:baseline;">Hệ thống quản lý này sẽ được triển khai tại Trường Đại học Công nghệ - Đại học Quốc gia Hà Nội. Hệ thống quản lý chỉ kiểm soát và duyệt xét tất cả các tài sản và tài liệu liên quan đến cơ sở vật chất của trường, bao gồm việc theo dõi tình trạng, sửa chữa, và bảo trì cho tất cả các cơ sở vật chất như tòa nhà, trang thiết bị, và đất đai. Hệ thống cũng cho phép quản lý việc phân chia và sử dụng các tài sản này cho các phòng ban và hoạt động khác nhau trong trường. Mục tiêu của hệ thống này là giúp đảm bảo nhu cầu cần thiết cho các hoạt động vận hành, quản lý của các bên liên quan trong trường được hoạt động trơn tru. Từ đó tạo ra một môi trường đào tạo giáo dục chất lượng cao, là nòng cốt trong sứ mệnh của Trường đại học Công nghệ là đào tạo nguồn nhân lực chất lượng cao cho đất nước.</span></p></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-14"></a>SRS-14</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h2>1.3&nbsp;Chức năng sản phẩm</h2>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-15"></a>SRS-15</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h2>1.4&nbsp;Đặc điểm người dùng</h2>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-16"></a>SRS-16</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h2>1.5&nbsp;Hạn chế</h2>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-17"></a>SRS-17</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h2>1.6&nbsp;Giả định và sự phụ thuộc</h2>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-18"></a>SRS-18</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h2>1.7&nbsp;Định nghĩa</h2>
+            <div class="htmlContent"><table style="width:465.6755905511812pt;"><tbody><tr><td style="vertical-align: top; width: 22.6248%;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">Thuật ngữ</span></p></td><td style="vertical-align: top; width: 77.0531%;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">Mô tả</span></p></td></tr><tr><td style="vertical-align: middle; width: 22.6248%;"><span style="text-decoration:none;vertical-align:baseline;">Hệ thống</span></td><td style="vertical-align: middle; width: 77.0531%;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">Là một tập hợp có tổ chức gồm nhiều phần tử có các mối quan hệ ràng buộc lẫn nhau và cùng hoạt động hướng tới một mục tiêu chung.&nbsp;</span></p></td></tr><tr><td style="vertical-align: middle; width: 22.6248%;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">Người dùng</span></p></td><td style="vertical-align: middle; width: 77.0531%;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">Tập hợp tất cả các đối tượng từ cá nhân, tổ chức, nhóm người có nhu cầu sử dụng chức năng hay dịch vụ trong hệ thống.</span></p></td></tr><tr><td style="vertical-align: middle; width: 22.6248%;"><p dir="ltr" style="text-align: justify;"><span style="text-decoration:none;vertical-align:baseline;">IOS và Android&nbsp;</span></p></td><td style="vertical-align: middle; width: 77.0531%;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">Hai hệ điều hành này được sử dụng trên nhiều loại thiết bị, bao gồm điện thoại thông minh, máy tính bảng và các thiết bị di động khác.</span></p></td></tr><tr><td style="vertical-align: middle; width: 22.6248%;"><p dir="ltr" style="text-align: justify;"><span style="text-decoration:none;vertical-align:baseline;">MacOS và Window</span></p></td><td style="vertical-align: middle; width: 77.0531%;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">Hai hệ điều hành dành cho máy tính của Apple Inc và phần nhiều các máy tính của hãng khác.</span></p></td></tr></tbody></table></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-19"></a>SRS-19</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h2>1.8&nbsp;Từ viết tắt, kí hiệu</h2>
+            <div class="htmlContent"><table style="width:465.6755905511812pt;"><tbody><tr><td style="vertical-align: middle; width: 15.0564%;">Từ viết tắt</td><td style="vertical-align: top; width: 84.7826%;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">Ý nghĩa</span></p></td></tr><tr><td style="vertical-align: middle; width: 15.0564%;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">ĐHQG</span></p></td><td style="vertical-align: middle; width: 84.7826%;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">Đại học Quốc gia</span></p></td></tr><tr><td style="vertical-align: middle; width: 15.0564%;"><p dir="ltr" style="text-align: justify;"><span style="text-decoration:none;vertical-align:baseline;">TCP</span></p></td><td style="vertical-align: middle; width: 84.7826%;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">Một trong hai giao thức giao tiếp qua Internet, được sử dụng để quản lý truyền tải dữ liệu giữa các thiết bị trên mạng.</span></p></td></tr><tr><td style="vertical-align: middle; width: 15.0564%;"><p dir="ltr" style="text-align: justify;"><span style="text-decoration:none;vertical-align:baseline;">AWS</span></p></td><td style="vertical-align: middle; width: 84.7826%;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">Amazon Web Services, là một dịch vụ đám mây (cloud computing) cung cấp một loạt các dịch vụ tính toán, lưu trữ, cơ sở dữ liệu, trí tuệ nhân tạo, machine learning, Internet of Things (IoT), nhiều dịch vụ khác cho các tổ chức và cá nhân bởi Amazon.&nbsp;</span></p></td></tr></tbody></table></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-35"></a>SRS-35</td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="description-col">
+            <h1>2&nbsp;Mô tả chung</h1>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-4"></a>SRS-4</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h2>2.1&nbsp;Quan điểm sản phẩm</h2>
+            <div class="htmlContent"><p dir="ltr" style="text-align: justify;"><span style="text-decoration:none;vertical-align:baseline;">Hệ thống quản lý cơ sở vật chất yêu cầu người dùng có quyền truy cập vào trình duyệt web trên thiết bị di động của họ thông qua tài khoản cá nhân được nhà trường cung cấp. Điều này có nghĩa là hệ thống sẽ phân quyền rõ rệt với từng nhóm người sử dụng và chú trọng hơn ở lĩnh vực quản lý trang thiết bị, cơ sở vật chất.&nbsp;</span></p></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-5"></a>SRS-5</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h3>2.1.1&nbsp;Giao diện hệ thống</h3>
+            <div class="htmlContent"><p dir="ltr" style="text-align: justify;"><span style="text-decoration:none;vertical-align:baseline;">Hệ thống quản lý cơ sở vật chất là một hệ thống hỗ trợ web, nghĩa là mọi tương tác của người dùng được thực hiện thông qua trình duyệt web. Các giao diện hệ thống được yêu cầu trên máy chủ hệ thống như sau:</span></p><ul><li dir="ltr" style="text-align: justify;"><span style="text-decoration:none;vertical-align:baseline;">Giao diện mạng với mạng có kết nối internet.</span></li><li dir="ltr" style="text-align: justify;"><span style="text-decoration:none;vertical-align:baseline;">Kết nối cơ sở dữ liệu với cơ sở dữ liệu chứa dữ liệu liên quan về trang thiết bị, cơ sở vật chất.</span></li></ul></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-6"></a>SRS-6</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h3>2.1.2&nbsp;Giao diện người dùng</h3>
+            <div class="htmlContent"><p dir="ltr" style="text-align: justify;"><span style="text-decoration:none;vertical-align:baseline;">Giao diện hệ thống thân thiện, dễ sử dụng, quen thuộc, tối giản dành cho người dùng.</span></p></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-7"></a>SRS-7</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h3>2.1.3&nbsp;Giao diện phần cứng</h3>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-8"></a>SRS-8</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h3>2.1.4&nbsp;Giao diện phần mềm</h3>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-9"></a>SRS-9</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h3>2.1.5&nbsp;Giao diện truyền thông</h3>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-10"></a>SRS-10</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h3>2.1.6&nbsp;Hạn chế về bộ nhớ</h3>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-11"></a>SRS-11</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h3>2.1.7&nbsp;Các thao tác</h3>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-12"></a>SRS-12</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h3>2.1.8&nbsp;Yêu cầu thích ứng trang web</h3>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-13"></a>SRS-13</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h3>2.1.9&nbsp;Giao tiếp với các dịch vụ</h3>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-20"></a>SRS-20</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h1>3&nbsp;Các yêu cầu</h1>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-21"></a>SRS-21</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h2>3.1&nbsp;Giao diện bên ngoài</h2>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-22"></a>SRS-22</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h2>3.2&nbsp;Các chức năng</h2>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-34"></a>SRS-34</td>
+          <td class="custom-col htmlContent">Functional Requirement</td>
+                      <td class="description-col">
+            <h3>3.2.1&nbsp;Chức năng chung</h3>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-36"></a>SRS-36</td>
+          <td class="custom-col htmlContent">Functional Requirement</td>
+                      <td class="description-col">
+            <h4>3.2.1.1&nbsp;Chức năng đăng nhập</h4>
+            <div class="htmlContent"><table><tbody><tr><td colspan="2" style="vertical-align:top;"><p dir="ltr" style="text-align: center;"><span style="text-decoration:none;vertical-align:baseline;">Use case: Đăng nhập</span></p></td></tr><tr><td style="vertical-align:top;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">Tác nhân</span></p></td><td style="vertical-align:top;"><span style="text-decoration:none;vertical-align:baseline;">Guest</span><br></td></tr><tr><td style="vertical-align:top;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">Mô tả</span></p></td><td style="vertical-align:top;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">Yêu cầu người dùng nhập đúng tài khoản và mật khẩu đã cấp để có thể đăng nhập vào hệ thống và hỗ trợ quá trình bảo mật&nbsp;</span></p></td></tr><tr><td style="vertical-align:top;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">Điều kiện tiên quyết</span></p></td><td style="vertical-align:top;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">Giao diện đăng nhập được hiển thị</span></p></td></tr><tr><td style="vertical-align:top;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">Hậu điều kiện</span></p></td><td style="vertical-align:top;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">Trang chủ hiện ra nếu đăng nhập thành công&nbsp;</span></p></td></tr><tr><td style="vertical-align:top;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">Luồng thực hiện</span></p></td><td style="vertical-align:top;"><ol><li dir="ltr" style="text-decoration:none;vertical-align:baseline;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">&nbsp;Người dùng truy cập vào mục</span></p></li></ol><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">“Đăng nhập” trên hệ thống</span></p><ol><li dir="ltr" style="text-decoration:none;vertical-align:baseline;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">&nbsp;Người dùng nhập tài khoản và mật khẩu của mình vào hệ thống</span></p></li><li dir="ltr" style="text-decoration:none;vertical-align:baseline;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">&nbsp;Người dùng nhấn nút Enter hoặc bấm nút “Đăng nhập”</span></p></li><li dir="ltr" style="text-decoration:none;vertical-align:baseline;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">&nbsp;Hệ thống tiến hành kiểm tra thông tin của người dùng&nbsp;</span></p></li><li dir="ltr" style="text-decoration:none;vertical-align:baseline;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">Giao diện trang chủ hiện ra&nbsp;</span></p></li></ol></td></tr><tr><td style="vertical-align:top;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">Luồng thay thế&nbsp;</span></p></td><td style="vertical-align:top;"><p dir="ltr"><span style="text-decoration:none;vertical-align:baseline;">&nbsp;Bước 4: Nếu thông tin đăng nhập không chính xác, hệ thống sẽ báo lỗi “Thông tin đăng nhập không chính xác”</span></p></td></tr></tbody></table></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent">Medium</td>
+                      <td class="custom-col htmlContent">Draft</td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-37"></a>SRS-37</td>
+          <td class="custom-col htmlContent">Functional Requirement</td>
+                      <td class="description-col">
+            <h4>3.2.1.2&nbsp;Tra cứu thông tin trang thiết bị</h4>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-23"></a>SRS-23</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h2>3.3&nbsp;Yêu cầu về khả năng sử dụng</h2>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-24"></a>SRS-24</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h2>3.4&nbsp;Yêu cầu về hiệu năng</h2>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-25"></a>SRS-25</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h2>3.5&nbsp;Yêu cầu cơ sở dữ liệu logic</h2>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-26"></a>SRS-26</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h2>3.6&nbsp;Ràng buộc về thiết kế</h2>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-27"></a>SRS-27</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h2>3.7&nbsp;Tuân thủ tiêu chuẩn</h2>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-28"></a>SRS-28</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h2>3.8&nbsp;Thuộc tính hệ thống phần mềm</h2>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr class="deleted">
+          <td class="id-col"><a id="SRS-33"></a>SRS-33 <i class="fas fa-trash-alt"></i></td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="description-col">
+            
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr class="deleted">
+          <td class="id-col"><a id="SRS-32"></a>SRS-32 <i class="fas fa-trash-alt"></i></td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="description-col">
+            
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-29"></a>SRS-29</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h1>4&nbsp;Xác minh</h1>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-30"></a>SRS-30</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h1>5&nbsp;Thông tin hỗ trợ</h1>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+        <tr>
+          <td class="id-col"><a id="SRS-31"></a>SRS-31</td>
+          <td class="custom-col htmlContent">Section</td>
+                      <td class="description-col">
+            <h1>6&nbsp;Tài liệu tham khảo</h1>
+            <div class="htmlContent"></div>
+          </td>
+          <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                      <td class="custom-col htmlContent"></td>
+                    </tr>
+      </tbody>
+    </table>
+  </div>
+  <hr>
+  <div class="float-right mr-4"><em>Last modified by <a href="mailto:21020189@vnu.edu.vn">Hà Hoàng, VNU</a> on 2023-11-29 04:24</em></div>
+  </div>
+</body>
+</html>
